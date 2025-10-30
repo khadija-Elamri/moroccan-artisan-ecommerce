@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 import { productService } from '../services/productService';
 import Button from '../components/common/Button';
-import Loader from '../components/common/Loader';
+import Loader from '../components/common/Leader';
 import Modal from '../components/common/Modal';
 import styles from './ProductDetail.module.css';
 

@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import Button from '../components/common/Button';
-import Loader from '../components/common/Loader';
+import Loader from '../components/common/Leader';
 import Modal from '../components/common/Modal';
 import styles from './Checkout.module.css';
 

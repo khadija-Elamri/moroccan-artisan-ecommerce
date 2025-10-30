@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import Button from '../common/Button';
-import Loader from '../common/Loader';
+import Loader from '../common/Leader';
 import styles from './Auth.module.css';
 
 const RegisterForm = () => {

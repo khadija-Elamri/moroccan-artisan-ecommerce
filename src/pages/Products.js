@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { productService } from '../services/productService';
 import ProductGrid from '../components/products/ProductGrid';
 import ProductFilter from '../components/products/ProductFilter';
-import Loader from '../components/common/Loader';
+import Loader from '../components/common/Leader';
 import styles from './Products.module.css';
 
 const Products = () => {
