@@ -1,186 +1,144 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { LanguageContext } from '../context/LanguageContext';
+import { useLanguage } from '../context/LanguageContext';
 import { productService } from '../services/productService';
-import ProductCard from '../components/products/ProductCard';
+import ProductGrid from '../components/products/ProductGrid';
+import ProductFilter from '../components/products/ProductFilter';
+import Loader from '../components/common/Loader';
 import styles from './Products.module.css';
 
 const Products = () => {
-  const { t } = useContext(LanguageContext);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState({
-    category: searchParams.get('category') || '',
-    priceMin: '',
-    priceMax: '',
-    sortBy: 'newest',
-    search: ''
-  });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useLanguage();
 
-  const categories = [
-    { id: 'all', name: 'Tous les produits' },
-    { id: 'jewelry', name: 'Bijoux' },
-    { id: 'pottery', name: 'Poterie' },
-    { id: 'textiles', name: 'Textiles' },
-    { id: 'leather', name: 'Maroquinerie' },
-    { id: 'cosmetics', name: 'Cosmétiques' },
-    { id: 'decoration', name: 'Décoration' }
-  ];
+  const initialFilters = {
+    category: searchParams.get('category') || '',
+    minPrice: searchParams.get('minPrice') || '',
+    maxPrice: searchParams.get('maxPrice') || '',
+    sortBy: searchParams.get('sortBy') || 'name',
+    sortOrder: searchParams.get('sortOrder') || 'asc'
+  };
+
+  const [filters, setFilters] = useState(initialFilters);
+
+  useEffect(() => {
+    loadCategories();
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     loadProducts();
   }, [filters]);
 
-  useEffect(() => {
-    const category = searchParams.get('category');
-    if (category) {
-      setFilters(prev => ({ ...prev, category }));
+  const loadCategories = async () => {
+    try {
+      const categoriesList = await productService.getCategories();
+      setCategories(categoriesList);
+    } catch (error) {
+      console.error('Error loading categories:', error);
     }
-  }, [searchParams]);
+  };
 
   const loadProducts = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const data = await productService.getAllProducts(filters);
-      setProducts(data.products || []);
+      const result = await productService.getProducts(filters);
+      setProducts(result.products);
+      
+      // Mettre à jour les paramètres d'URL
+      const newSearchParams = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) {
+          newSearchParams.set(key, value);
+        }
+      });
+      setSearchParams(newSearchParams);
     } catch (error) {
       console.error('Error loading products:', error);
-      setProducts([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleFilterChange = (key, value) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
-    
-    if (key === 'category') {
-      if (value && value !== 'all') {
-        searchParams.set('category', value);
-      } else {
-        searchParams.delete('category');
-      }
-      setSearchParams(searchParams);
-    }
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
   };
 
-  const clearFilters = () => {
-    setFilters({
+  const clearAllFilters = () => {
+    const clearedFilters = {
       category: '',
-      priceMin: '',
-      priceMax: '',
-      sortBy: 'newest',
-      search: ''
-    });
+      minPrice: '',
+      maxPrice: '',
+      sortBy: 'name',
+      sortOrder: 'asc'
+    };
+    setFilters(clearedFilters);
     setSearchParams({});
   };
 
+  const activeFiltersCount = Object.values(filters).filter(
+    value => value && value !== 'name' && value !== 'asc'
+  ).length;
+
   return (
     <div className={styles.productsPage}>
-      <div className={styles.container}>
-        <h1 className={styles.pageTitle}>Nos Produits Artisanaux</h1>
+      <div className={styles.pageHeader}>
+        <h1>{t('ourProducts')}</h1>
+        <p>{t('productsDescription')}</p>
+      </div>
 
-        <div className={styles.layout}>
-          <aside className={styles.sidebar}>
-            <div className={styles.filterSection}>
-              <h3 className={styles.filterTitle}>Catégories</h3>
-              <div className={styles.categoryList}>
-                {categories.map(cat => (
-                  <button
-                    key={cat.id}
-                    onClick={() => handleFilterChange('category', cat.id === 'all' ? '' : cat.id)}
-                    className={`${styles.categoryBtn} ${
-                      (cat.id === 'all' && !filters.category) || filters.category === cat.id
-                        ? styles.active
-                        : ''
-                    }`}
-                  >
-                    {cat.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.filterSection}>
-              <h3 className={styles.filterTitle}>Prix</h3>
-              <div className={styles.priceInputs}>
-                <input
-                  type="number"
-                  placeholder="Min"
-                  value={filters.priceMin}
-                  onChange={(e) => handleFilterChange('priceMin', e.target.value)}
-                  className={styles.priceInput}
-                />
-                <span>-</span>
-                <input
-                  type="number"
-                  placeholder="Max"
-                  value={filters.priceMax}
-                  onChange={(e) => handleFilterChange('priceMax', e.target.value)}
-                  className={styles.priceInput}
-                />
-              </div>
-            </div>
-
-            <button onClick={clearFilters} className={styles.clearBtn}>
-              Réinitialiser les filtres
-            </button>
-          </aside>
-
-          <main className={styles.mainContent}>
-            <div className={styles.toolbar}>
-              <div className={styles.searchBar}>
-                <input
-                  type="text"
-                  placeholder="Rechercher un produit..."
-                  value={filters.search}
-                  onChange={(e) => handleFilterChange('search', e.target.value)}
-                  className={styles.searchInput}
-                />
-              </div>
-
-              <select
-                value={filters.sortBy}
-                onChange={(e) => handleFilterChange('sortBy', e.target.value)}
-                className={styles.sortSelect}
+      <div className={styles.productsContent}>
+        <aside className={styles.sidebar}>
+          <div className={styles.filterHeader}>
+            <h3>{t('filters')}</h3>
+            {activeFiltersCount > 0 && (
+              <button 
+                className={styles.clearAllButton}
+                onClick={clearAllFilters}
               >
-                <option value="newest">Plus récents</option>
-                <option value="price-asc">Prix croissant</option>
-                <option value="price-desc">Prix décroissant</option>
-                <option value="popular">Populaires</option>
-                <option value="rating">Mieux notés</option>
-              </select>
-            </div>
-
-            {loading ? (
-              <div className={styles.loading}>
-                <div className={styles.spinner}></div>
-                <p>Chargement des produits...</p>
-              </div>
-            ) : products.length > 0 ? (
-              <>
-                <div className={styles.resultsCount}>
-                  {products.length} produit{products.length > 1 ? 's' : ''} trouvé{products.length > 1 ? 's' : ''}
-                </div>
-                <div className={styles.productGrid}>
-                  {products.map(product => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              </>
-            ) : (
-              <div className={styles.noResults}>
-                <div className={styles.noResultsIcon}>🔍</div>
-                <h3>Aucun produit trouvé</h3>
-                <p>Essayez de modifier vos filtres de recherche</p>
-                <button onClick={clearFilters} className={styles.resetBtn}>
-                  Voir tous les produits
-                </button>
-              </div>
+                {t('clearAll')} ({activeFiltersCount})
+              </button>
             )}
-          </main>
-        </div>
+          </div>
+          
+          <ProductFilter
+            categories={categories}
+            onFilterChange={handleFilterChange}
+            initialFilters={filters}
+          />
+        </aside>
+
+        <main className={styles.mainContent}>
+          <div className={styles.resultsHeader}>
+            <div className={styles.resultsInfo}>
+              {loading ? (
+                <span>{t('loading')}...</span>
+              ) : (
+                <span>
+                  {products.length} {t('productsFound')}
+                </span>
+              )}
+            </div>
+            
+            <div className={styles.viewOptions}>
+              <button className={styles.viewOption} title="Grid View">
+                ◼️
+              </button>
+              <button className={styles.viewOption} title="List View">
+                ☰
+              </button>
+            </div>
+          </div>
+
+          {loading ? (
+            <Loader text={t('loadingProducts')} />
+          ) : (
+            <ProductGrid products={products} />
+          )}
+        </main>
       </div>
     </div>
   );

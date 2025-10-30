@@ -1,0 +1,144 @@
+.notFound {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fef7ed 0%, #fed7aa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.content {
+  text-align: left;
+}
+
+.errorCode {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #2c1810;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #666;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.searchSuggestion {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.searchSuggestion p {
+  color: #2c1810;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.popularLinks {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.popularLinks a {
+  color: #8B4513;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #F5DEB3;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.popularLinks a:hover {
+  background: #8B4513;
+  color: white;
+}
+
+.illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artisanIllustration {
+  font-size: 8rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .errorCode {
+    font-size: 4rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .artisanIllustration {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popularLinks {
+    justify-content: center;
+  }
+
+  .artisanIllustration {
+    font-size: 4rem;
+  }
+}

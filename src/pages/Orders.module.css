@@ -1,0 +1,305 @@
+.orders {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #2c1810;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #666;
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filterButton {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.filterButton:hover {
+  border-color: #8B4513;
+  color: #8B4513;
+}
+
+.filterButton.active {
+  background: #8B4513;
+  border-color: #8B4513;
+  color: white;
+}
+
+/* Orders List */
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.orderCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.orderInfo h3 {
+  color: #2c1810;
+  margin-bottom: 0.5rem;
+}
+
+.orderDate {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.statusBadge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Order Items */
+.orderItems {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.orderItem:not(:last-child) {
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.itemImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.itemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #8B4513;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemDetails h4 {
+  color: #2c1810;
+  margin-bottom: 0.25rem;
+}
+
+.itemPrice {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.itemTotal {
+  font-weight: 600;
+  color: #8B4513;
+}
+
+/* Order Footer */
+.orderFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.orderTotal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.orderTotal strong {
+  color: #2c1810;
+}
+
+.orderTotal span {
+  color: #8B4513;
+  font-weight: bold;
+}
+
+.orderActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Shipping Info */
+.shippingInfo {
+  padding: 1.5rem;
+  background: #f8f8f8;
+}
+
+.shippingDetail {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.shippingDetail:last-child {
+  margin-bottom: 0;
+}
+
+.shippingDetail strong {
+  color: #2c1810;
+  min-width: 150px;
+}
+
+.shippingDetail span {
+  color: #666;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.emptyState h3 {
+  color: #2c1810;
+  margin-bottom: 1rem;
+}
+
+.emptyState p {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orders {
+    padding: 1rem 0;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .orderHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .orderFooter {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .orderActions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .orderItem {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .itemImage {
+    align-self: flex-start;
+  }
+
+  .shippingDetail {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .shippingDetail strong {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterButton {
+    text-align: center;
+  }
+
+  .orderActions {
+    flex-direction: column;
+  }
+
+  .orderActions button {
+    width: 100%;
+  }
+}

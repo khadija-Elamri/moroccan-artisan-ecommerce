@@ -1,0 +1,277 @@
+/* Styles pour CartItem */
+.cartItem {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.itemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: #F5DEB3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #8B4513;
+}
+
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.itemName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2c1810;
+  margin: 0;
+}
+
+.itemVariant {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+}
+
+.itemPrice {
+  font-size: 1rem;
+  color: #8B4513;
+  font-weight: 600;
+  margin: 0;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.quantityButton {
+  background: white;
+  border: 2px solid #e0e0e0;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.quantityButton:hover:not(:disabled) {
+  border-color: #8B4513;
+  color: #8B4513;
+}
+
+.quantityButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity {
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.itemSubtotal {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-size: 1.25rem;
+}
+
+.removeButton:hover {
+  background: #ffe6e6;
+}
+
+/* Styles pour CartSummary */
+.cartSummary {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.cartSummary h3 {
+  margin-bottom: 1.5rem;
+  color: #2c1810;
+  font-size: 1.25rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.summaryRow.total {
+  border-bottom: none;
+  border-top: 2px solid #8B4513;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #8B4513;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.freeShipping {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.shippingNote {
+  background: #f0f9ff;
+  color: #0369a1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.checkoutButton {
+  width: 100%;
+  margin: 1.5rem 0 1rem;
+}
+
+.securityNote {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Styles pour le panier vide */
+.emptyCart {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.emptyCartIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.emptyCart h2 {
+  color: #8B4513;
+  margin-bottom: 1rem;
+}
+
+.emptyCart p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cartItem {
+    grid-template-columns: 80px 1fr;
+    grid-template-areas: 
+      "image details"
+      "quantity subtotal"
+      "remove remove";
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .itemImage {
+    grid-area: image;
+    width: 60px;
+    height: 60px;
+  }
+
+  .itemDetails {
+    grid-area: details;
+  }
+
+  .quantityControls {
+    grid-area: quantity;
+    justify-self: start;
+  }
+
+  .itemSubtotal {
+    grid-area: subtotal;
+    justify-self: end;
+    font-size: 1rem;
+  }
+
+  .removeButton {
+    grid-area: remove;
+    justify-self: end;
+    margin-top: 0.5rem;
+  }
+
+  .cartSummary {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cartItem {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "image"
+      "details"
+      "quantity"
+      "subtotal"
+      "remove";
+    text-align: center;
+  }
+
+  .itemImage {
+    justify-self: center;
+  }
+
+  .quantityControls {
+    justify-self: center;
+  }
+
+  .itemSubtotal {
+    justify-self: center;
+  }
+
+  .removeButton {
+    justify-self: center;
+  }
+}

@@ -1,0 +1,292 @@
+.contact {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Contact Content */
+.contactContent {
+  padding: 4rem 1rem;
+  background: white;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Contact Form */
+.contactFormSection h2,
+.contactInfoSection h2 {
+  font-size: 2rem;
+  color: #2c1810;
+  margin-bottom: 2rem;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: #2c1810;
+  font-size: 0.875rem;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitButton {
+  margin-top: 1rem;
+}
+
+/* Contact Info */
+.contactIntro {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contactInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contactInfoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  border-radius: 12px;
+}
+
+.contactIcon {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.contactDetails h3 {
+  color: #2c1810;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.contactDetails p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Social & FAQ Sections */
+.socialSection,
+.faqSection {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.socialSection h3,
+.faqSection h3 {
+  color: #2c1810;
+  margin-bottom: 1rem;
+}
+
+.socialLinks,
+.faqLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.socialLink,
+.faqLink {
+  color: #8B4513;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+.socialLink:hover,
+.faqLink:hover {
+  color: #D2691E;
+  text-decoration: underline;
+}
+
+/* Map Section */
+.mapSection {
+  padding: 4rem 1rem;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.mapSection h2 {
+  font-size: 2rem;
+  color: #2c1810;
+  margin-bottom: 2rem;
+}
+
+.mapPlaceholder {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapContent {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+/* Success Message */
+.successMessage {
+  text-align: center;
+  padding: 6rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.successIcon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.successMessage h2 {
+  color: #2c1810;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.successMessage p {
+  color: #666;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .contactFormSection h2,
+  .contactInfoSection h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .contactContent {
+    padding: 3rem 1rem;
+  }
+
+  .mapSection {
+    padding: 3rem 1rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .contactInfoItem {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .mapPlaceholder {
+    height: 300px;
+  }
+
+  .mapContent {
+    font-size: 1.125rem;
+  }
+
+  .successMessage {
+    padding: 4rem 1rem;
+  }
+}
