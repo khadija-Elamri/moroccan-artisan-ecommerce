@@ -1,14 +1,13 @@
-# 🛍️ Plateforme E-Commerce - Artisanat Marocain
+#  Plateforme E-Commerce - Artisanat Marocain
 
 Plateforme e-commerce complète dédiée à la vente et promotion de produits artisanaux marocains.
 
-## 📋 Prérequis
+##  Prérequis
 
-- Node.js (version 16 ou supérieure)
 - npm ou yarn
 - Visual Studio Code (recommandé)
 
-## 🚀 Installation
+##  Installation
 
 ### 1. Créer le projet
 
@@ -44,7 +43,7 @@ npm start
 
 L'application sera accessible sur `http://localhost:3000`
 
-## 📁 Structure du Projet
+##  Structure du Projet
 
 ```
 src/
@@ -67,9 +66,9 @@ src/
 └── index.js         # Point d'entrée
 ```
 
-## 🎯 Fonctionnalités Implémentées
+##  Fonctionnalités Implémentées
 
-### ✅ Fonctionnalités Principales
+###  Fonctionnalités Principales
 
 - **Authentification**
   - Inscription / Connexion
@@ -92,14 +91,14 @@ src/
   - Support FR/EN
   - Changement de langue dynamique
 
-### 🎨 Design
+###  Design
 
 - Design responsive (Mobile, Tablette, Desktop)
 - Palette de couleurs inspirée de l'artisanat marocain
 - Animations et transitions fluides
 - CSS Modules pour l'isolation des styles
 
-## 🔧 Configuration VS Code
+##  Configuration VS Code
 
 ### Extensions Recommandées
 
@@ -121,7 +120,7 @@ src/
 }
 ```
 
-## 🌐 API Backend (À implémenter)
+## API Backend (À implémenter)
 
 Le projet utilise des services API qui nécessitent un backend. Endpoints principaux :
 
@@ -135,7 +134,7 @@ GET    /api/orders/user
 POST   /api/products/:id/reviews
 ```
 
-## 📦 Scripts Disponibles
+##  Scripts Disponibles
 
 ```bash
 npm start          # Lance le serveur de développement
@@ -144,7 +143,7 @@ npm test           # Lance les tests
 npm run eject      # Éjecte la configuration
 ```
 
-## 🎨 Personnalisation
+##  Personnalisation
 
 ### Couleurs
 
@@ -164,21 +163,21 @@ Ajoutez ou modifiez les traductions dans :
 - `src/locales/fr.json`
 - `src/locales/en.json`
 
-## 🔐 Sécurité
+##  Sécurité
 
 - Authentification par JWT (à implémenter côté backend)
 - Validation des données utilisateur
 - Protection CSRF
 - Certificat SSL requis en production
 
-## 📱 Responsive Design
+##  Responsive Design
 
 Le site s'adapte automatiquement aux différentes tailles d'écran :
 - Mobile : < 768px
 - Tablette : 768px - 1024px
 - Desktop : > 1024px
 
-## 🚀 Déploiement
+##  Déploiement
 
 ### Build de Production
 
@@ -195,7 +194,7 @@ Les fichiers optimisés seront dans le dossier `build/`
 - AWS Amplify
 - Firebase Hosting
 
-## 🤝 Contribution
+##  Contribution
 
 1. Fork le projet
 2. Créer une branche (`git checkout -b feature/AmazingFeature`)
@@ -203,7 +202,7 @@ Les fichiers optimisés seront dans le dossier `build/`
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
-## 📝 Prochaines Étapes
+##  Prochaines Étapes
 
 ### À Développer
 
@@ -225,15 +224,15 @@ Les fichiers optimisés seront dans le dossier `build/`
 - [ ] Optimisation SEO
 - [ ] Tests unitaires et E2E
 
-## 👥 Auteurs
+##  Auteurs
 
 Réalisé par : Oussaraf Zainab et El Amri Khadija
 
-## 📄 Licence
+##  Licence
 
 Ce projet est développé dans un cadre éducatif.
 
-## 📞 Support
+##  Support
 
 Pour toute question ou problème :
 - Créer une issue sur GitHub
