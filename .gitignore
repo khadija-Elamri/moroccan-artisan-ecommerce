@@ -65,8 +65,8 @@ out
 dist
 
 # Gatsby files
-.cache/
-public
+# .cache/
+# public
 
 # Serverless directories
 .serverless/
