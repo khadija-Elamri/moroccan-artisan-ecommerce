@@ -9,6 +9,17 @@ Plateforme e-commerce complète dédiée à la vente et promotion de produits ar
 
 ##  Installation
 
+# Version Hooks
+
+Cette version du projet utilise **React Hooks (useState, useEffect, etc.)**  
+pour la gestion d'état et les interactions dans les composants.
+
+## Principales caractéristiques :
+- useState pour la gestion locale
+- useEffect pour le cycle de vie
+- Aucun Redux utilisé
+
+
 ### 1. Créer le projet
 
 ```bash
@@ -226,7 +237,7 @@ Les fichiers optimisés seront dans le dossier `build/`
 
 ##  Auteurs
 
-Réalisé par : Oussaraf Zainab et El Amri Khadija
+Réalisé par : El Amri Khadija
 
 ##  Licence
 
