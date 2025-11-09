@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Footer.module.css';
+import styl from './Header.module.css';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -11,7 +12,12 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.footerContent}>
           <div className={styles.footerSection}>
-            <h3 className={styles.logo}>🪷 {t('appName')}</h3>
+            <Link to="/" className={styl.logo}>
+          {}        <img src="./image/logo.jpg" alt="DarArtisana" className={styl.logoImage} />
+          {}
+          { <span className={styl.logoText}>DarArtisana</span> }
+        </Link>
+        <br></br>
             <p>{t('footerDescription')}</p>
             <div className={styles.socialLinks}>
               <a href="#" aria-label="Facebook">📘</a>
@@ -51,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div className={styles.footerBottom}>
-          <p>&copy; 2024 {t('appName')}. {t('allRightsReserved')}</p>
+          <p>&copy; 2025 {t('appName')}. {t('allRightsReserved')}</p>
         </div>
       </div>
     </footer>

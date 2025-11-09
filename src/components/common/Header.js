@@ -5,6 +5,8 @@ import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Header.module.css';
 
+
+
 const Header = () => {
   const { user, logout } = useAuth();
   const { getCartItemsCount } = useCart();
@@ -25,7 +27,9 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          🪷 {t('appName')}
+          {}        <img src="./image/logo.jpg" alt="DarArtisana" className={styles.logoImage} />
+          {}
+          { <span className={styles.logoText}>DarArtisana</span> }
         </Link>
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>

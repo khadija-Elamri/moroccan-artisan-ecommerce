@@ -19,10 +19,24 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+ 
+}
+
+.logoImage {
+  height: 40px; 
+  width: auto;
+  max-width: 650px; /* اضبط الحد الأقصى للعرض */
+   border-radius: 50px;
+}
+
+.logoText {
+  margin-left: 10px;
   font-size: 1.5rem;
   font-weight: bold;
-  text-decoration: none;
-  color: white;
+  color: #faf2f2; /* اضبط اللون حسب احتياجك */
 }
 
 .nav {
