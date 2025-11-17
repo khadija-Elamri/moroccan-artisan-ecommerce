@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  
   const login = async (email, password) => {
     try {
       // Simulation d'appel API

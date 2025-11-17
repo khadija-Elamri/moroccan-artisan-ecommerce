@@ -60,11 +60,11 @@ L'application sera accessible sur `http://localhost:3000`
 src/
 ├── components/        # Composants réutilisables
 │   ├── common/       # Composants communs (Header, Footer, Button)
-│   ├── products/     # Composants liés aux produits
+│   ├── products/     # Composants liés aux  
 │   ├── cart/         # Composants du panier
 │   ├── auth/         # Formulaires d'authentification
 │   ├── checkout/     # Processus de commande
-│   └── dashboard/    # Tableaux de bord
+│  
 ├── pages/            # Pages de l'application
 ├── context/          # Contextes React (Auth, Cart, Language)
 ├── hooks/            # Hooks personnalisés
@@ -76,6 +76,9 @@ src/
 ├── routes.js        # Configuration des routes
 └── index.js         # Point d'entrée
 ```
+
+
+
 
 ##  Fonctionnalités Implémentées
 

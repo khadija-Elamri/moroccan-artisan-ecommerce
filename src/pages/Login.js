@@ -15,7 +15,7 @@ const Login = () => {
     <div className={styles.authPage}>
       <div className={styles.authHero}>
         <div className={styles.heroContent}>
-          <h1>🪷 Bienvenue sur Artisanat Marocain</h1>
+          <h1>Bienvenue sur Artisanat Marocain</h1>
           <p>
             Découvrez l'authenticité et le savoir-faire des artisans marocains. 
             Connectez-vous pour accéder à des produits uniques et artisanaux.

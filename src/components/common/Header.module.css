@@ -26,11 +26,11 @@
 }
 
 .logoImage {
-  height: 40px; 
+  height: 60px; /* بدل 60px */
   width: auto;
-  max-width: 650px; /* اضبط الحد الأقصى للعرض */
-   border-radius: 50px;
+  max-width: 950px;
 }
+
 
 .logoText {
   margin-left: 10px;

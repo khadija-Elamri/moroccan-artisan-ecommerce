@@ -15,7 +15,7 @@ const Register = () => {
     <div className={styles.authPage}>
       <div className={styles.authHero}>
         <div className={styles.heroContent}>
-          <h1>🎨 Rejoignez notre communauté</h1>
+          <h1> Rejoignez notre communauté</h1>
           <p>
             Inscrivez-vous pour découvrir des produits artisanaux uniques 
             ou pour vendre vos propres créations si vous êtes artisan.
