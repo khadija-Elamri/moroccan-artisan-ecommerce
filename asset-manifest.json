@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/moroccan-artisan-ecommerce/static/css/main.f46a5e66.css",
+    "main.js": "/moroccan-artisan-ecommerce/static/js/main.f46fca2c.js",
+    "static/js/453.4b70863b.chunk.js": "/moroccan-artisan-ecommerce/static/js/453.4b70863b.chunk.js",
+    "index.html": "/moroccan-artisan-ecommerce/index.html",
+    "main.f46a5e66.css.map": "/moroccan-artisan-ecommerce/static/css/main.f46a5e66.css.map",
+    "main.f46fca2c.js.map": "/moroccan-artisan-ecommerce/static/js/main.f46fca2c.js.map",
+    "453.4b70863b.chunk.js.map": "/moroccan-artisan-ecommerce/static/js/453.4b70863b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f46a5e66.css",
+    "static/js/main.f46fca2c.js"
+  ]
+}
