@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react'; // 1. Ajout de useCallback
 import { useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { productService } from '../services/productService';
 import ProductGrid from '../components/products/ProductGrid';
 import ProductFilter from '../components/products/ProductFilter';
-import Loader from '../components/common/Leader';
+import Loader from '../components/common/Loader'; // 2. Correction de "Leader" en "Loader"
 import styles from './Products.module.css';
 
 const Products = () => {
@@ -24,25 +24,13 @@ const Products = () => {
 
   const [filters, setFilters] = useState(initialFilters);
 
+  // 3. Chargement des catégories uniquement au montage (mount)
   useEffect(() => {
     loadCategories();
-    loadProducts();
   }, []);
 
-  useEffect(() => {
-    loadProducts();
-  }, [filters]);
-
-  const loadCategories = async () => {
-    try {
-      const categoriesList = await productService.getCategories();
-      setCategories(categoriesList);
-    } catch (error) {
-      console.error('Error loading categories:', error);
-    }
-  };
-
-  const loadProducts = async () => {
+  // 4. Utilisation de useCallback pour stabiliser la fonction et éviter les boucles infinies
+  const loadProducts = useCallback(async () => {
     setLoading(true);
     try {
       const result = await productService.getProducts(filters);
@@ -61,6 +49,20 @@ const Products = () => {
     } finally {
       setLoading(false);
     }
+  }, [filters, setSearchParams]); // Dépendances de la fonction
+
+  // 5. Chargement des produits quand les filtres changent (inclus le montage initial)
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
+
+  const loadCategories = async () => {
+    try {
+      const categoriesList = await productService.getCategories();
+      setCategories(categoriesList);
+    } catch (error) {
+      console.error('Error loading categories:', error);
+    }
   };
 
   const handleFilterChange = (newFilters) => {
@@ -76,7 +78,8 @@ const Products = () => {
       sortOrder: 'asc'
     };
     setFilters(clearedFilters);
-    setSearchParams({});
+    // setSearchParams({}) est géré par l'effet loadProducts, 
+    // mais on peut le faire ici pour une réponse UI instantanée si besoin.
   };
 
   const activeFiltersCount = Object.values(filters).filter(
